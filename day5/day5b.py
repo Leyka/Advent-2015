@@ -42,26 +42,6 @@ def has_sandwich_letters(text):
         if letter == same_letter:
             return True
         i += 1
-    return False
-
-# def is_nice(text):
-#     return (has_pair_twice(text) and repeated_letters(text))
-
-# def has_pair_twice(text):
-#     """
-#         It contains a pair of any two letters that appears at least twice in the string without overlapping,
-#         like xyxy (xy) or aabcdefgaa (aa),
-#         but not like aaa (aa, but it overlaps).
-#     """
-#
-#     two_letters = re.findall('..?', text)
-#
-#     for letters in two_letters:
-#
-
-
-
-# def repeated_letters(text):
 
 if __name__ == '__main__':
     main()
