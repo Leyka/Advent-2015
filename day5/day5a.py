@@ -1,5 +1,3 @@
-import re
-
 def main():
 
     with open('data.txt', 'r') as f:
