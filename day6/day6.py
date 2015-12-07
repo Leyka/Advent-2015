@@ -9,32 +9,30 @@ def day6_a():
         for row in data:
             if row:
                 columns = row.split(' ')
+                toggle = columns[0] == 'toggle'
 
-                if columns[0] == 'toggle':
+                if toggle:
                     action = columns[0]
                     from_ = columns[1]
                     to = columns[3]
-
-                    x1, y1, x2, y2 = get_coordinates(from_, to)
-
-                    for x in range(x1, x2 + 1):
-                        for y in range(y1, y2 + 1):
-
-                            if (x,y) in lights:
-                                lights.remove((x,y))
-                            else:
-                                lights.add((x,y))
                 else:
                     action = columns[1]
                     from_ = columns[2]
                     to = columns[4]
 
-                    x1, y1, x2, y2 = get_coordinates(from_, to)
-                    for x in range(x1, x2 + 1):
-                        for y in range(y1, y2 + 1):
-                            if action == 'on':
+                x1, y1, x2, y2 = get_coordinates(from_, to)
+                
+                for x in range(x1, x2 + 1):
+                    for y in range(y1, y2 + 1):
+                        if toggle:
+                            if (x,y) in lights:
+                                lights.remove((x,y))
+                            else:
                                 lights.add((x,y))
-                            elif action == 'off' and (x,y) in lights:
+                        else:
+                            if action == 'on': #turn on
+                                lights.add((x,y))
+                            elif action == 'off' and (x,y) in lights: #turn off
                                     lights.remove((x,y))
 
     print("Numbers lights on: " + str(len(lights))) #543903
